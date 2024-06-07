@@ -47,8 +47,17 @@ public class TicTacToe {
     }
 
     private boolean hasWinner() {
-        // Implement logic to check for a winner
-        return false;
+        char marker = currentPlayer.getMarker();
+        for (int i = 0; i < 3; i++) {
+            // Check rows and columns
+            if ((board.getCell(i, 0) == marker && board.getCell(i, 1) == marker && board.getCell(i, 2) == marker) ||
+                    (board.getCell(0, i) == marker && board.getCell(1, i) == marker && board.getCell(2, i) == marker)) {
+                return true;
+            }
+        }
+        // Check diagonals
+        return (board.getCell(0, 0) == marker && board.getCell(1, 1) == marker && board.getCell(2, 2) == marker) ||
+                (board.getCell(0, 2) == marker && board.getCell(1, 1) == marker && board.getCell(2, 0) == marker);
     }
 
     public static void main(String[] args) {
