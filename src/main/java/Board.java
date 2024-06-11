@@ -52,4 +52,8 @@ public class Board {
             System.out.println("-------");
         }
     }
+
+    public char getCell(int x, int y) {
+        return board[x][y];
+    }
 }
