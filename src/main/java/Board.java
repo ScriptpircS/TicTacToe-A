@@ -2,8 +2,8 @@ public class Board {
     private char[][] board;
 
     public Board() {
-
         board = new char[3][3];
+        clear(); // Initialize the board with spaces
     }
 
     public boolean isCellEmpty(int x, int y) {
@@ -15,7 +15,6 @@ public class Board {
     }
 
     public boolean isFull() {
-        int count = 0;
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if (board[i][j] == ' ') {
@@ -25,6 +24,7 @@ public class Board {
         }
         return true;
     }
+
 
     public void clear() {
         for (int i = 0; i < 3; i++) {
