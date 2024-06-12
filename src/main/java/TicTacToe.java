@@ -8,13 +8,9 @@ public class TicTacToe {
     private Scanner scanner = new Scanner(System.in);
 
     public void start() {
-        boolean playAgain = true;
-        while (playAgain) {
-            board.clear();
-            currentPlayer = player1;
-            play();
-            playAgain = askPlayAgain();
-        }
+        board.clear();
+        currentPlayer = player1;
+        play();
     }
 
     private void play() {
@@ -34,39 +30,15 @@ public class TicTacToe {
     }
 
     private void makeMove() {
-        int row = -1;
-        int col = -1;
-        boolean validMove = false;
-
-        while (!validMove) {
-            System.out.print("Enter row (0-2): ");
-            if (scanner.hasNextInt()) {
-                row = scanner.nextInt();
-            } else {
-                System.out.println("Invalid input! Please enter a number between 0 and 2.");
-                scanner.next(); // Clear invalid input
-                continue;
-            }
-
-            System.out.print("Enter column (0-2): ");
-            if (scanner.hasNextInt()) {
-                col = scanner.nextInt();
-            } else {
-                System.out.println("Invalid input! Please enter a number between 0 and 2.");
-                scanner.next(); // Clear invalid input
-                continue;
-            }
-
-            if (row >= 0 && row <= 2 && col >= 0 && col <= 2) {
-                if (board.isCellEmpty(row, col)) {
-                    board.place(row, col, currentPlayer.getMarker());
-                    validMove = true;
-                } else {
-                    System.out.println("That cell is already occupied! Try again.");
-                }
-            } else {
-                System.out.println("Invalid input! Please enter values between 0 and 2.");
-            }
+        System.out.print("Enter row (0-2): ");
+        int row = scanner.nextInt();
+        System.out.print("Enter column (0-2): ");
+        int col = scanner.nextInt();
+        if (board.isCellEmpty(row, col)) {
+            board.place(row, col, currentPlayer.getMarker());
+        } else {
+            System.out.println("That cell is already occupied! Try again.");
+            makeMove();
         }
     }
 
@@ -86,12 +58,6 @@ public class TicTacToe {
         // Check diagonals
         return (board.getCell(0, 0) == marker && board.getCell(1, 1) == marker && board.getCell(2, 2) == marker) ||
                 (board.getCell(0, 2) == marker && board.getCell(1, 1) == marker && board.getCell(2, 0) == marker);
-    }
-
-    private boolean askPlayAgain() {
-        System.out.print("Do you want to play again? (yes/no): ");
-        String response = scanner.next();
-        return response.equalsIgnoreCase("yes");
     }
 
     public static void main(String[] args) {
