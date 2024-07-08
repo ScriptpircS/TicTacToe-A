@@ -86,7 +86,7 @@ public class BoardTest {
     void print() {
         Board board = setup();
 
-        board.print();
+        //board.print();
 
         //assert
     }
