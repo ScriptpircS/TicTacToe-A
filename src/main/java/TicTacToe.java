@@ -87,10 +87,16 @@ public class TicTacToe {
         return (board.getCell(0, 0) == marker && board.getCell(1, 1) == marker && board.getCell(2, 2) == marker) ||
                 (board.getCell(0, 2) == marker && board.getCell(1, 1) == marker && board.getCell(2, 0) == marker);
     }
+
     private boolean askPlayAgain() {
         System.out.print("Do you want to play again? (yes/no): ");
         String response = scanner.next();
         return response.equalsIgnoreCase("yes");
+    }
+
+    //braucht es eigentlich nicht
+    public Player getCurrentPlayer() {
+        return currentPlayer;
     }
 
     public static void main(String[] args) {
