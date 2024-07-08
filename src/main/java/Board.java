@@ -33,14 +33,7 @@ public class Board {
         }
     }
 
-    /*
-        -------
-        |X| |O|
-        | |X|X|
-        |X|O|O|
-        -------
-     */
-    public void print() { // unbedingt testen
+    public void print() {
         System.out.println("-------");
         for (int i = 0; i < 3; i++) {
             System.out.print("|");
