@@ -70,11 +70,11 @@ public class TicTacToe {
         }
     }
 
-    private void switchCurrentPlayer() {
+    protected void switchCurrentPlayer() {
         currentPlayer = (currentPlayer == player1) ? player2 : player1;
     }
 
-    private boolean hasWinner() {
+    protected boolean hasWinner() {
         char marker = currentPlayer.getMarker();
         for (int i = 0; i < 3; i++) {
             // Check rows and columns
@@ -87,10 +87,21 @@ public class TicTacToe {
         return (board.getCell(0, 0) == marker && board.getCell(1, 1) == marker && board.getCell(2, 2) == marker) ||
                 (board.getCell(0, 2) == marker && board.getCell(1, 1) == marker && board.getCell(2, 0) == marker);
     }
+
+
+
     private boolean askPlayAgain() {
         System.out.print("Do you want to play again? (yes/no): ");
         String response = scanner.next();
         return response.equalsIgnoreCase("yes");
+    }
+
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    public Board getBoard() {
+        return board;
     }
 
     public static void main(String[] args) {
