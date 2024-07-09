@@ -11,7 +11,9 @@ public class Board {
     }
 
     public void place(int x, int y, char marker) {
-        board[x][y] = marker;
+        if (board[x][y] == ' ') {
+            board[x][y] = marker;
+        }
     }
 
     public boolean isFull() {
